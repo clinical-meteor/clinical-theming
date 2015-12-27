@@ -1,0 +1,9 @@
+<template name="themingPage">
+  <div id="themingPage" class="page">
+    {{> recordHeader url="samples" spreadsheet=false  imageGrid=false}}
+    <div class="pageBody" style="{{getOpacity}}">
+      {{> themingCard }}
+    </div>
+    {{> recordFooter }}
+  </div>
+</template>
