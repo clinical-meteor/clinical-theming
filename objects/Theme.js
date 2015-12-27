@@ -11,10 +11,38 @@ if (Meteor.isClient) {
 
 if (Meteor.isClient) {
   Theme = {
+    /**
+     * @summary Configure the global Theme object for the application.
+     * @memberOf Theme
+     * @name configure
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.configure({
+     *   appTitle: "Nifty Spiffy App",
+     *   backgroundColor: "lightgray",
+     *   backgroundUrl: ""
+     * });
+     * ```
+     */
     configure: function (configObject) {
       Session.set('ThemeConfig', configObject);
       this.paintBackgroundColor();
     },
+    /**
+     * @summary Get the title for the application.
+     * @memberOf Theme
+     * @name getAppTitle
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Template.appLayout.helpers({
+     *   getTitleText: function () {
+     *     return Theme.getAppTitle();
+     *   }
+     * });
+     * ```
+     */
     getAppTitle: function (){
       var theme = Session.get('ThemeConfig');
       if (theme.appTitle) {
@@ -24,22 +52,59 @@ if (Meteor.isClient) {
         return "";
       }
     },
+    /**
+     * @summary Set the title for the application.
+      * @memberOf Theme
+     * @name setAppTitle
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.setAppTitle($('#appTitleInput').val());
+     * ```
+     */
     setAppTitle: function (newTitle){
       var theme = Session.get('ThemeConfig');
       theme.appTitle = newTitle;
       Session.set('ThemeConfig', theme);
     },
+
     setBackgroundUrl: function (newUrl){
       var theme = Session.get('ThemeConfig');
       theme.backgroundUrl = newUrl;
       Session.set('ThemeConfig', theme);
     },
+    /**
+     * @summary Set the background color that the app should use.
+     * @memberOf Theme
+     * @name setBackgroundColor
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.setBackgroundColor('blue');
+     * Theme.setBackgroundColor('green');
+     * Theme.setBackgroundColor('maroon');
+     * Theme.setBackgroundColor('gray');
+     * Theme.setBackgroundColor('lightgray');
+     * Theme.setBackgroundColor('gradient');
+     * Theme.setBackgroundColor('background-color: #808080;');
+     * ```
+     */
     setBackgroundColor: function (newColor){
       var theme = Session.get('ThemeConfig');
       theme.backgroundColor = newColor;
       Session.set('ThemeConfig', theme);
       this.paintBackgroundColor();
     },
+    /**
+     * @summary Triggers a repaint of the body background, using whatever background color value is set in the Theme object.
+     * @memberOf Theme
+     * @name paintBackgroundColor
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.paintBackgroundColor();
+     * ```
+     */
     paintBackgroundColor: function (){
       console.log('paintBackgroundColor');
 
