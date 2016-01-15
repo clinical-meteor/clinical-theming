@@ -4,7 +4,25 @@ if (Meteor.isClient) {
   Session.setDefault('ThemeConfig', {
     appTitle: "",
     backgroundColor: "",
-    backgroundUrl: ""
+    backgroundUrl: "",
+    background: {
+      color: "",
+      url: ""
+    },
+    brand: {
+      primary: "",
+      success: "",
+      info: "",
+      warning: "",
+      danger: ""
+    },
+    palette: {
+      colorA: "",
+      colorB: "",
+      colorC: "",
+      colorD: "",
+      colorE: ""
+    }
   });
 }
 
@@ -70,7 +88,7 @@ if (Meteor.isClient) {
 
     setBackgroundUrl: function (newUrl){
       var theme = Session.get('ThemeConfig');
-      theme.backgroundUrl = newUrl;
+      theme.background.url = newUrl;
       Session.set('ThemeConfig', theme);
     },
     /**
@@ -91,7 +109,7 @@ if (Meteor.isClient) {
      */
     setBackgroundColor: function (newColor){
       var theme = Session.get('ThemeConfig');
-      theme.backgroundColor = newColor;
+      theme.background.color = newColor;
       Session.set('ThemeConfig', theme);
       this.paintBackgroundColor();
     },
@@ -109,7 +127,7 @@ if (Meteor.isClient) {
       console.log('paintBackgroundColor');
 
       var theme = Session.get('ThemeConfig');
-      var themeColor = theme.backgroundColor;
+      var themeColor = theme.background.color;
 
       switch (themeColor) {
         case 'maroon':
@@ -137,8 +155,80 @@ if (Meteor.isClient) {
           $('body').attr("style", "background-image: -webkit-linear-gradient(top, #555555, #aaaaaa 100%); background-image: -moz-linear-gradient(top, #555555, #aaaaaa 100%); background-image: -o-linear-gradient(top, #555555, #aaaaaa 100%); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; -moz-user-select: none; -khtml-user-select: none;");
           break;
         default:
-          $('body').attr('style', themeColor);
+          $('body').attr('style', "background-color: " + themeColor);
       }
+    },
+    /**
+     * @summary Set the brand color that the app should use.
+     * @memberOf Theme
+     * @name setBrandColors
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.setBrandColor('#2C302E', '#909590', '#256D1B', '#9AE19D', '#537A5A');
+     * ```
+     */
+    setBrandColors: function (colorA, colorB, colorC, colorD, colorE){
+      var theme = Session.get('ThemeConfig');
+      theme.brand = {
+        primary: colorA,
+        success: colorB,
+        info: colorC,
+        warning: colorD,
+        danger: colorE
+      }
+      Session.set('ThemeConfig', theme);
+      this.paintBackgroundColor();
+    },
+    /**
+     * @summary Set the brand color that the app should use.
+     * @memberOf Theme
+     * @name setBrandColors
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.setBrandColor('#2C302E', '#909590', '#256D1B', '#9AE19D', '#537A5A');
+     * ```
+     */
+    setPaletteColors: function (colorA, colorB, colorC, colorD, colorE){
+      var theme = Session.get('ThemeConfig');
+      theme.palette = {
+        colorA: colorA,
+        colorB: colorB,
+        colorC: colorC,
+        colorD: colorD,
+        colorE: colorE
+      }
+      Session.set('ThemeConfig', theme);
+      this.paintBackgroundColor();
+    },
+    /**
+     * @summary Get the brand color that the app should use.  Accepts one of [primary, success, info, warning, danger]
+     * @memberOf Theme
+     * @name getBrandColor
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.getBrandColor('success');
+     * ```
+     */
+    getBrandColor: function (key){
+      var theme = Session.get('ThemeConfig');
+      return theme.brand[key];
+    },
+    /**
+     * @summary Get the palette color that the app should use.  Accepts one of [colorA, colorB, colorC, colorD, colorE]
+     * @memberOf Theme
+     * @name getPaletteColor
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.getPaletteColor('colorA');
+     * ```
+     */
+    getPaletteColor: function (key){
+      var theme = Session.get('ThemeConfig');
+      return theme.palette[key];
     }
   };
 

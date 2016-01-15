@@ -21,6 +21,10 @@ Router.go('/theming');
 {{> themingCard }}
 ````
 
+===============================
+#### Color Palettes  
+
+https://coolors.co/app
 
 ===============================
 #### Licensing  
