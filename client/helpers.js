@@ -1,5 +1,5 @@
-Template.registerHelper("getBackgroundColor", function (color){
-  return Theme.getBackgroundColor();
+Template.registerHelper("getBackgroundColor", function (){
+  return "background-color: " + Theme.getBackgroundColor() + "; ";
 });
 Template.registerHelper("getPaletteColor", function (color){
   return "color: " + Theme.getPaletteColor(color) + "; ";
