@@ -229,6 +229,20 @@ if (Meteor.isClient) {
     getPaletteColor: function (key){
       var theme = Session.get('ThemeConfig');
       return theme.palette[key];
+    },
+    /**
+     * @summary Get the background color the app should use.  
+     * @memberOf Theme
+     * @name getBackgroundColor
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.getBackgroundColor();
+     * ```
+     */
+    getBackgroundColor: function (key){
+      var theme = Session.get('ThemeConfig');
+      return theme.background.color;
     }
   };
 
