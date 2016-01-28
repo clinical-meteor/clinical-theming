@@ -41,3 +41,10 @@ test:
     - sleep 80
   override:
     - cd helloworld && starrynight run-tests --type package-verification
+
+
+## Custom notifications
+#notify:
+  #webhooks:
+    # A list of hashes representing hooks. Only the url field is supported.
+    #- url: https://someurl.com/hooks/circle
