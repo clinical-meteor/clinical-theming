@@ -42,12 +42,6 @@ test:
   override:
     - cd helloworld && starrynight run-tests --type package-verification
 
-## Customize deployment commands
-#deployment:
-#  production:
-#    branch: master
-#    commands:
-#      - printf "<Meteor username>\n<Meteor password>\n" | meteor deploy circlecivelocity.meteor.com
 
 ## Custom notifications
 #notify:
