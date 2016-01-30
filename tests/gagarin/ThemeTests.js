@@ -4,13 +4,13 @@ describe('clinical:csv', function () {
 
   it('Should exist on the client', function () {
     return client.execute(function () {
-      expect(Theme).not.to.be.empty;
+      expect(Theme).to.exist;
     });
   });
 
-  it('Should exist on the server', function () {
+  it('Should not exist on the server', function () {
     return server.execute(function () {
-      expect(Theme).not.to.be.empty;
+      expect(Theme).to.not.exist;
     });
   });
 
