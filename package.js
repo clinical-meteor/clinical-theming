@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:theming',
-  version: '0.3.1',
+  version: '0.4.8',
   summary: 'Theming object for ClinicalFramework.  No UI provided; just configuration.',
   git: 'https://github.com/clinical-meteor/clinical-theming',
   documentation: 'README.md'
@@ -12,6 +12,7 @@ Package.onUse(function (api) {
   api.use('meteor-platform');
   api.use('session');
 
+  api.addFiles('client/helpers.js', 'client');
   api.addFiles('objects/Theme.js', 'client');
 
   api.export('Theme');

@@ -9,6 +9,9 @@ if (Meteor.isClient) {
       color: "",
       url: ""
     },
+    page: {
+      background: ""
+    },
     brand: {
       primary: "",
       success: "",
@@ -176,7 +179,7 @@ if (Meteor.isClient) {
         info: colorC,
         warning: colorD,
         danger: colorE
-      }
+      };
       Session.set('ThemeConfig', theme);
       this.paintBackgroundColor();
     },
@@ -198,7 +201,7 @@ if (Meteor.isClient) {
         colorC: colorC,
         colorD: colorD,
         colorE: colorE
-      }
+      };
       Session.set('ThemeConfig', theme);
       this.paintBackgroundColor();
     },
@@ -229,6 +232,24 @@ if (Meteor.isClient) {
     getPaletteColor: function (key){
       var theme = Session.get('ThemeConfig');
       return theme.palette[key];
+    },
+    /**
+     * @summary Get the background color the app should use.
+     * @memberOf Theme
+     * @name getBackgroundColor
+     * @version 1.2.3
+     * @example
+     * ```js
+     * Theme.getBackgroundColor();
+     * ```
+     */
+    getBackgroundColor: function (key){
+      var theme = Session.get('ThemeConfig');
+      if (key) {
+        return theme.palette[key];
+      } else {
+        return theme.background.color;
+      }
     }
   };
 
