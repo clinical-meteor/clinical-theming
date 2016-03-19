@@ -7,7 +7,8 @@ if (Meteor.isClient) {
     backgroundUrl: "",
     background: {
       color: "",
-      url: ""
+      url: "",
+      images: []
     },
     page: {
       background: ""
@@ -156,6 +157,9 @@ if (Meteor.isClient) {
           break;
         case 'gradient':
           $('body').attr("style", "background-image: -webkit-linear-gradient(top, #555555, #aaaaaa 100%); background-image: -moz-linear-gradient(top, #555555, #aaaaaa 100%); background-image: -o-linear-gradient(top, #555555, #aaaaaa 100%); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; background-repeat: no-repeat; background-attachment: fixed; -moz-user-select: none; -khtml-user-select: none;");
+          break;
+        case 'image':
+          $('body').attr('style', "background: url(" + theme.background.url + ") no-repeat center center fixed;");
           break;
         default:
           $('body').attr('style', "background-color: " + themeColor);

@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:theming',
-  version: '0.4.9',
+  version: '0.4.10',
   summary: 'Theming object for ClinicalFramework.  No UI provided; just configuration.',
   git: 'https://github.com/clinical-meteor/clinical-theming',
   documentation: 'README.md'
